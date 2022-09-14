@@ -1,0 +1,115 @@
+let hands = ["⛰️", "🧻", "✂️"]
+let stageEl = document.getElementById("stage")
+let rockBtn = document.getElementById("pickBtnRock")
+let paperBtn = document.getElementById("pickBtnPaper")
+let scissorBtn = document.getElementById("pickBtnScissor")
+let wonText = document.getElementById("wonNum")
+let lostText = document.getElementById("lostNum")
+
+const audio = new Audio("https://github.com/JohnRush07/audioPiano/raw/main/bg-audio.mp3")
+audio.play()
+// Create a function that returns a random item from the array
+
+function getHand() {
+    let randomIndex = Math.floor( Math.random() * 3)
+    return hands[randomIndex]
+}
+function buttonDisable() {
+    rockBtn.disabled = true
+    paperBtn.disabled = true
+    scissorBtn.disabled = true
+}
+function buttonEnable() {
+    rockBtn.disabled = false
+    paperBtn.disabled = false
+    scissorBtn.disabled = false
+}
+
+function wonAdd() {
+    wonText.textContent = Number(wonText.textContent) + 1
+}
+function lostAdd() {
+    lostText.textContent = Number(lostText.textContent) + 1
+}
+
+
+async function scissor() {
+   let opponent = getHand()
+   buttonDisable()
+   stageEl.textContent = "✂️" + " vs " + opponent
+   if (opponent == "⛰️") {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "✂️" + " < " + opponent
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Lost!"
+   lostAdd()
+   } else if (opponent == "🧻") {
+                  await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "✂️" + " > " + opponent
+          await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Won!"
+   wonAdd()
+   } else {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "✂️" + " = " + opponent
+              await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "TIE"   
+   }
+      await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = ""
+   buttonEnable()
+}
+
+async function rock() {
+    let opponent = getHand()
+    buttonDisable()
+   stageEl.textContent = "⛰️" + " vs " + opponent
+   if (opponent == "🧻") {
+   await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "⛰️" + " < " + opponent
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Lost!"
+   lostAdd()
+   } else if (opponent == "✂️") {
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          stageEl.textContent = "⛰️" + " > " + opponent
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Won!"
+   wonAdd()
+   } else {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+              stageEl.textContent = "⛰️" + " = " + opponent
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "TIE"   
+   }
+      await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = ""
+   buttonEnable()
+}
+
+async function paper() {
+    let opponent = getHand()
+    buttonDisable()
+   stageEl.textContent = "🧻" + " vs " + opponent
+   if (opponent == "✂️") {
+       await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "🧻" + " < " + opponent
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Lost!"
+   lostAdd()
+   } else if (opponent == "⛰️") {
+       await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "🧻" + " > " + opponent
+          await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "You Won!"
+   wonAdd()
+   } else {
+              await new Promise(resolve => setTimeout(resolve, 1000));
+   stageEl.textContent = "🧻" + " = " + opponent
+              await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = "TIE"   
+   }
+   await new Promise(resolve => setTimeout(resolve, 2000));
+   stageEl.textContent = ""
+   buttonEnable()
+}

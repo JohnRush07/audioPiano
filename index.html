@@ -1,1 +1,25 @@
-Hellou!
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container2">
+        <h1>Rock⛰️Paper🧻 Scissors✂️<br></h1>
+                <div id="stage"></div>
+                <div class="stats" style="line-height:0px;">
+                <p id="statText">Won:  Lost:</p>
+                <p id="wonNum" style="margin:0;display:inline;float:left">0</p>
+                <p id="lostNum" style="margin:0;display:inline:float:right">0</p>
+                </div>
+        </div>
+        <div class="container">
+        <button id="pickBtnRock" onclick="rock()">⛰️</button>
+        <button id="pickBtnPaper" onclick="paper()">🧻</button>
+        <button id="pickBtnScissor" onclick="scissor()">✂️</button>
+        <script src="index.js"></script>
+        </div>
+    </body>
+</html>
